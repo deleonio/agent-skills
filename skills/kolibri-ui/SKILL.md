@@ -32,6 +32,10 @@ Look for `@public-ui/*` in `package.json`:
 - only `components` → `<kol-…>` tags.
 - nothing, or the components do not render → [setup.md](references/setup.md).
 
+Icon fonts of the theme: copy `assets/` into the static directory and link **all** its stylesheets –
+`node <skill-path>/scripts/kol-icons.mjs` prints the exact `<link>` tags for the installed version.
+Missing ones show as tofu squares later ([setup.md](references/setup.md), Icons).
+
 ## 2. Map the UI
 
 Every control, heading and message gets a component from [components.md](references/components.md);

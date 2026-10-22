@@ -1,6 +1,6 @@
 {
 	"name": "kolibri",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"displayName": "KoliBri",
 	"description": "Build accessible web UIs with Public UI – KoliBri: the kolibri-ui skill plus the KoliBri MCP server for component samples, specs and docs.",
 	"author": {
@@ -10,5 +10,13 @@
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/agent-skills",
 	"license": "EUPL-1.2",
-	"keywords": ["accessibility", "a11y", "bitv", "kolibri", "public-ui", "web-components", "wcag"]
+	"keywords": [
+		"accessibility",
+		"a11y",
+		"bitv",
+		"kolibri",
+		"public-ui",
+		"web-components",
+		"wcag"
+	]
 }

@@ -6,6 +6,8 @@ KoliBri coverage
 
 - [ ] No native `button`, `input`, `select`, `textarea`, `a`, `h1`–`h6`, `dialog`.
 - [ ] No deprecated component.
+- [ ] Theme icon CSS loaded: every stylesheet under the theme's `assets/` is linked (derive with
+      `scripts/kol-icons.mjs`) – built-in icons render, no empty squares (tofu).
 
 Accessibility
 
@@ -41,6 +43,9 @@ const errorLinks = () =>
   page.evaluate(() =>
     [...document.querySelector('kol-form').shadowRoot.querySelectorAll('a')].map((a) => a.textContent.trim()),
   );
+// Icon fonts registered by the stylesheets – an entry must exist and end up "loaded" once used.
+// No entry for "kolicons"/"codicon" at all = stylesheet missing, icons render as tofu squares.
+const fontFamilies = () => page.evaluate(() => [...document.fonts].map((f) => `${f.family}:${f.status}`));
 // Value of a field
 const value = (id) => page.evaluate((i) => document.getElementById(i).getValue(), id);
 ```
