@@ -6,7 +6,10 @@
   `theme-desy`, `theme-ecl`, `theme-kern`).
 - Adapter per framework: `react-v19`, `react-hook-form-adapter`, `angular-v21`, `vue`, `solid`,
   `preact`, `svelte`; SSR: `hydrate`.
-- All `@public-ui/*` packages in exactly the same version.
+- All `@public-ui/*` packages in exactly the same version; check the current major before
+  installing (`npm view @public-ui/components version`).
+- Resolve subpath imports against the installed version's `exports` map: v4 maps
+  `@public-ui/components/loader`; older majors only resolve `./dist/loader`.
 
 ## Register – once, before the first render
 
@@ -22,11 +25,26 @@ Without a bundler, use the same imports from `https://unpkg.com/@public-ui/...` 
 `<script type="module">`. Several themes: `register([DEFAULT, ECL], …)`, switch via the `kol-theme`
 attribute.
 
+Top-level `await register(…)` needs an ES2022 build target (Vite: `build.target: 'es2022'`);
+a default target such as es2020 fails the build. Alternatively, bootstrap inside an async function.
+
 ## Icons
 
-```ts
-import '@public-ui/components/assets/kolicons/style.css';
+The components use icon fonts for their built-in icons (close buttons, drop-down arrows). The
+themes ship the fonts under `assets/`. Copy them into your static directory and load the
+stylesheets – a CSS import from `@public-ui/components` fails, the package exports no assets:
+
+```bash
+cp -R node_modules/@public-ui/theme-default/assets public/assets
 ```
+
+```html
+<link rel="stylesheet" href="/assets/codicons/codicon.css" />
+<link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+```
+
+In the dev server, linking into the package directory also works
+(`/node_modules/@public-ui/theme-default/assets/…`), as the official templates do.
 
 ## Light/dark
 

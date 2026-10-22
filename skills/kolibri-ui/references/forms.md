@@ -7,6 +7,8 @@
 2. A field shows its error only with `_msg` **and** `_touched`.
 3. After a failed submit: errors on all fields, set `_errorList` in **visual field order**, call
    `focusErrorList()`. The jump links focus the field through `selector` → `id` on the `kol-*` host.
+   That is the `id` **attribute**; `_id` does not provide it – it only links label and input
+   internally, so jump links into it stay silent.
 4. Success: show an `alert` with `_type="success"` and `_alert`.
 
 ## React Hook Form + Zod
