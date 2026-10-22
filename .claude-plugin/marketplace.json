@@ -1,0 +1,12 @@
+{
+	"name": "public-ui",
+	"description": "Agent skills and MCP integration for Public UI – KoliBri",
+	"owner": { "name": "Public UI – KoliBri", "url": "https://github.com/public-ui" },
+	"plugins": [
+		{
+			"name": "kolibri",
+			"source": "./",
+			"description": "Build accessible web UIs with KoliBri components (skill + MCP server)"
+		}
+	]
+}

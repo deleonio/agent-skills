@@ -1,0 +1,6 @@
+{
+	"printWidth": 160,
+	"singleQuote": true,
+	"useTabs": true,
+	"overrides": [{ "files": ["*.md", "*.yml", "*.yaml"], "options": { "useTabs": false, "printWidth": 120, "proseWrap": "preserve" } }]
+}

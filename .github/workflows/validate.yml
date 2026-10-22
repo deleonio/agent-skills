@@ -1,0 +1,31 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Agent Skills specification
+        run: |
+          pip install skills-ref==0.1.1
+          for skill in skills/*/; do agentskills validate "$skill"; done
+      - name: Skill conventions
+        run: node scripts/check-skills.mjs
+      - name: Formatting
+        run: npx --yes prettier@3.9.10 --check .
+      - name: Script smoke test
+        run: node skills/kolibri-ui/scripts/kol-props.mjs form | grep -q '_errorList'
